@@ -1,0 +1,24 @@
+{
+  "packageType": "Service",
+  "name": "employeeservice",
+  "description": "training project for infrastructure internship",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run test & node index.js",
+    "test": "eslint  ./ --fix"
+  },
+  "author": "Ehsan Mir",
+  "version": "0.1.0",
+  "//": "releaseNote types: test, feature ,improvement ,bugFix ,docs",
+  "releaseNote": {
+    "0.1.0": [
+      {
+        "type": "feature",
+        "title": "اضافه کردن بخش اول تمرین"
+      }
+    ]
+  },
+  "dependencies": {
+    "redis": "^4.3.1"
+  }
+}

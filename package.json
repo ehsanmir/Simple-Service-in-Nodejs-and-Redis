@@ -8,9 +8,15 @@
     "test": "eslint  ./ --fix"
   },
   "author": "Ehsan Mir",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "//": "releaseNote types: test, feature ,improvement ,bugFix ,docs",
   "releaseNote": {
+    "1.0.0": [
+      {
+        "type": "feature",
+        "title": "اضافه کردن بخش سوم و نهایی تمرین"
+      }
+    ],
     "0.2.0": [
       {
         "type": "feature",

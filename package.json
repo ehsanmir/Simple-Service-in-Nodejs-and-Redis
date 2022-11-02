@@ -8,9 +8,19 @@
     "test": "eslint  ./ --fix"
   },
   "author": "Ehsan Mir",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "//": "releaseNote types: test, feature ,improvement ,bugFix ,docs",
   "releaseNote": {
+    "0.2.0": [
+      {
+        "type": "feature",
+        "title": "اضافه کردن بخش دوم تمرین"
+      },
+      {
+        "type": "improvement",
+        "title": "بهبود اعتبارسنجی ورودی‌ها"
+      }
+    ],
     "0.1.0": [
       {
         "type": "feature",

@@ -52,23 +52,23 @@ async function dataService(response, data, method) {
       sendResponse(400, '[!] Please send a valid request.');
       return;
     }
-    var obj = JSON.parse(data);
+    var obj1 = JSON.parse(data);
     try {
       await redisClient.select(0);
-      var result1 = await redisClient.get(obj['id']);
+      var result1 = await redisClient.get(obj1['id']);
       if (result1 == null) {
-        var result2 = await redisClient.get(obj['parent']);
+        var result2 = await redisClient.get(obj1['parent']);
         if (result2 != null) {
-          var result3 = await redisClient.set(obj['id'], obj['data']);
+          var result3 = await redisClient.set(obj1['id'], obj1['data']);
           if (result3 == 'OK') {
             await redisClient.select(1);
-            var result4 = await redisClient.set(obj['id'], obj['parent']);
+            var result4 = await redisClient.set(obj1['id'], obj1['parent']);
             if (result4 == 'OK') {
               sendResponse(200, '[*] Data successfully added.');
               return;
             }
             else {
-              await redisClient.del(obj['id']);
+              await redisClient.del(obj1['id']);
               sendResponse(400, '[!] Error while inserting the parent.');
               return;
             }
@@ -120,6 +120,61 @@ async function dataService(response, data, method) {
       }
       else {
         sendResponse(400, '[!] id not found.');
+        return;
+      }
+    }
+    catch (e) {
+      sendResponse(400, '[!] Error while processing the request.');
+      return;
+    }
+  }
+  // for part 3
+  else if (method == 'PUT') {
+    if (!security.validateRequest1(data)) {
+      sendResponse(400, '[!] Please send a valid request.');
+      return;
+    }
+    var obj2 = JSON.parse(data);
+    try {
+      await redisClient.select(0);
+      var result7 = await redisClient.get(obj2['id']);
+      if (result7 != null) {
+        var result8 = await redisClient.get(obj2['parent']);
+        if (result8 != null) {
+          await redisClient.select(1);
+          var result9 = await redisClient.get(obj2['id']);
+          if (result9 != null) {
+            var result10 = await redisClient.set(obj2['id'], obj2['parent']);
+            if (result10 == 'OK') {
+              await redisClient.select(0);
+              var result11 = await redisClient.set(obj2['id'], obj2['data']);
+              if (result11 == 'OK') {
+                sendResponse(200, '[*] Data successfully updated.');
+                return;
+              }
+              else {
+                await redisClient.del(obj2['id']);
+                sendResponse(400, '[!] Error while updating data.');
+                return;
+              }
+            }
+            else {
+              sendResponse(400, '[!] Error while updating parent.');
+              return;
+            }
+          }
+          else {
+            sendResponse(400, '[!] Person\'s parent not found.');
+            return;
+          }
+        }
+        else {
+          sendResponse(400, '[!] Parent\'s id not found.');
+          return;
+        }
+      }
+      else {
+        sendResponse(400, '[!] Id not found.');
         return;
       }
     }

@@ -59,7 +59,7 @@ async function dataService(response, data, method) {
       if (result1 == null) {
         var result2 = await redisClient.get(obj1['parent']);
         if (result2 != null) {
-          var result3 = await redisClient.set(obj1['id'], obj1['data']);
+          var result3 = await redisClient.set(obj1['id'], JSON.stringify(obj1['data']));
           if (result3 == 'OK') {
             await redisClient.select(1);
             var result4 = await redisClient.set(obj1['id'], obj1['parent']);
@@ -147,7 +147,7 @@ async function dataService(response, data, method) {
             var result10 = await redisClient.set(obj2['id'], obj2['parent']);
             if (result10 == 'OK') {
               await redisClient.select(0);
-              var result11 = await redisClient.set(obj2['id'], obj2['data']);
+              var result11 = await redisClient.set(obj2['id'], JSON.stringify(obj2['data']));
               if (result11 == 'OK') {
                 sendResponse(200, '[*] Data successfully updated.');
                 return;

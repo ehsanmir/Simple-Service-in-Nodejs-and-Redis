@@ -8,9 +8,15 @@
     "test": "eslint  ./ --fix"
   },
   "author": "Ehsan Mir",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "//": "releaseNote types: test, feature ,improvement ,bugFix ,docs",
   "releaseNote": {
+    "1.0.1": [
+      {
+        "type": "bugFix",
+        "title": "رفع مشکل فیلد دیتا"
+      }
+    ],
     "1.0.0": [
       {
         "type": "feature",

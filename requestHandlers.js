@@ -1,6 +1,14 @@
 var security = require('./lib/security');
 var redis = require('redis');
-var redisClient = redis.createClient();
+var dotenv = require('dotenv');
+dotenv.config();
+var redisClient = redis.createClient({
+  socket: {
+    host: '127.0.0.1',
+    port: 6379
+  },
+  password: process.env.REDIS_PASS
+});
 /**
  * Handles / and start path requests.
  * @param {string} response The respone to be sent.

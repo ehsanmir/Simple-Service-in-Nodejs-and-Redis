@@ -1,8 +1,12 @@
-var server = require('./server');
-var router = require('./router');
-var requestHandlers = require('./requestHandlers');
-var handle = {};
+const server = require('./server');
+const router = require('./router');
+const requestHandlers = require('./requestHandlers');
+const dbCreate = require('./lib/database').create;
+const dotenv = require('dotenv');
+dotenv.config();
+let handle = {};
 handle['/'] = requestHandlers.start;
 handle['/start'] = requestHandlers.start;
 handle['/dataService'] = requestHandlers.dataService;
-server.start(router.route, handle);
+let db = [dbCreate(0), dbCreate(1)];
+server.start(router.route, handle, db);

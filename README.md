@@ -23,9 +23,9 @@ You also need redis database running on port 6379 and at least one sample key (l
 
 |method|Input Example|Output Example|
 |------|-------------|--------------|
-|POST|`{"id":"123", "data":"sad user" "parent","0"}`|`{"statusCode": 201, "message":"[*] Data successfully added."}`|
-|GET|`/dataService?id=123`|`{"id":"123", "data":"sample user" "parent","0"}`|
-|PUT|`{"id":"123", "data":"happy user" "parent","0"}`|`{"statusCode": 201, "message":"[*] Data successfully updated."}`|
+|POST|`{"id":"123", "data":"sad user", "parent":"0"}`|`{"statusCode": "201", "message":"[*] Data successfully added."}`|
+|GET|`/dataService?id=123`|`{"id":"123", "data":"sample user", "parent":"0"}`|
+|PUT|`{"id":"123", "data":"happy user", "parent":"0"}`|`{"statusCode": "201", "message":"[*] Data successfully updated."}`|
 
 
 ## UML

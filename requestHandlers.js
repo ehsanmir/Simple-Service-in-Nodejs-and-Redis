@@ -12,9 +12,12 @@ const handleUpdate = require('./lib/update').handleUpdate;
  */
 function start(response, data, method) {
   if (method == 'GET') {
-    handleResponse(response, 200, '[*] Welcome to EmployeeService, Send something to /dataService');
-  }
-  else {
+    handleResponse(
+      response,
+      200,
+      '[*] Welcome to simple service, Send something to /dataService'
+    );
+  } else {
     handleResponse(response, 405, '[!] Method not allowed in this path.');
   }
   response.end();
@@ -29,21 +32,19 @@ function start(response, data, method) {
 async function dataService(response, data, method, db) {
   if (method == 'GET') {
     if (!security.validateId(data)) {
-      handleResponse(response, 422, '[!] Please send a valid query with id.');
+      handleResponse(response, 422, "[!] Please send a valid query with id.");
       return;
     }
     await handleQuery(response, data, db);
-  }
-  else {
+  } else {
     let validate = security.validateJson(data);
     if (!validate.isValid) {
       handleResponse(response, 422, validate.reason);
       return;
     }
-    if (method == 'POST') {
+    if (method == "POST") {
       await handleInsert(response, data, db);
-    }
-    else if (method == 'PUT') {
+    } else if (method == "PUT") {
       await handleUpdate(response, data, db);
     }
   }

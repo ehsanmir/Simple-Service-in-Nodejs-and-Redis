@@ -1,7 +1,7 @@
 {
   "packageType": "Service",
-  "name": "employeeservice",
-  "description": "training project for infrastructure internship",
+  "name": "simpleService",
+  "description": "Fast, secure and clean backend service using nodejs and redis database.",
   "main": "index.js",
   "scripts": {
     "start": "npm run test & node index.js",
@@ -9,40 +9,39 @@
   },
   "author": "Ehsan Mir",
   "version": "1.0.2",
-  "//": "releaseNote types: test, feature ,improvement ,bugFix ,docs",
   "releaseNote": {
     "1.0.2": [
       {
         "type": "improvement",
-        "title": "موازی‌سازی ردیس و بهبود کدها"
+        "title": "refactoring and improve redis clients"
       }
     ],
     "1.0.1": [
       {
         "type": "bugFix",
-        "title": "رفع مشکل فیلد دیتا"
+        "title": "fix fata field problem"
       }
     ],
     "1.0.0": [
       {
         "type": "feature",
-        "title": "اضافه کردن بخش سوم و نهایی تمرین"
+        "title": "add put requests"
       }
     ],
     "0.2.0": [
       {
         "type": "feature",
-        "title": "اضافه کردن بخش دوم تمرین"
+        "title": "add get requests"
       },
       {
         "type": "improvement",
-        "title": "بهبود اعتبارسنجی ورودی‌ها"
+        "title": "improve input validations"
       }
     ],
     "0.1.0": [
       {
         "type": "feature",
-        "title": "اضافه کردن بخش اول تمرین"
+        "title": "add post requests"
       }
     ]
   },

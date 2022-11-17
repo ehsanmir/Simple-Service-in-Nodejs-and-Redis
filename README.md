@@ -4,7 +4,7 @@
 ## Getting started
 - Clone the repository
 ```
-git clone https://github.com/ehsanmir/Simple-Service-in-Nodejs-and-Redis
+git clone https://github.com/ehsanmir/Simple-Service-in-Nodejs-and-Redis.git
 ```
 - Install the service
 ```
